@@ -47,11 +47,11 @@ movie-container-select {
 }
 
 .seat.selected {
-  background-color: #6feaf6a;
+  background-color: #fff;
 }
 
 .seat.occupied {
-  background-color: #fff;
+  background-color: #add8e6;
 }
 
 .seat:nth-of-type(2) {
