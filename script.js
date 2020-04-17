@@ -7,13 +7,20 @@ const movieSelect = document.getElementById('movie');
 let ticketPrice = +movieSelect.value;
 //could also use parseInt() above
 
+//save movie index + price to local storage
+setMovieData(movieIndex, moviePrice) => {
+  localStorage.setItem('selectedMovieIndex', movieIndex);
+  localStorage.setItem('selectedMoviePrice', moviePrice);
+}
+
 updateSelectedCount = () => {
   const selectedSeats = document.querySelectorAll('.row .seat.selected')
 
   const seatsIndex = [...selectedSeats].map(seat => {
     return [...seats].indexOf(seat);
   });
-  console.log(seatsIndex)
+
+  localStorage.setItem('selectedSeats', JSON.stringify(seatsIndex));
 
   const selectedSeatsCount = selectedSeats.length;
 
@@ -21,8 +28,15 @@ updateSelectedCount = () => {
   total.innerText = selectedSeatsCount * ticketPrice
 }
 
+//pull data from local localStorage
+populateUI = () => {
+  const selectedSeats = JSON.parse(localStorage.getItem('selectedSeats'));
+  
+}
+
 movieSelect.addEventListener('change', event => {
   ticketPrice = +event.target.value;
+  setMovieData(event.target.selectedIndex, event.target.value);
   updateSelectedCount();
 });
 
