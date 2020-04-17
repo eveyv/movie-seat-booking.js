@@ -8,7 +8,7 @@ let ticketPrice = +movieSelect.value;
 //could also use parseInt() above
 
 //save movie index + price to local storage
-setMovieData(movieIndex, moviePrice) => {
+setMovieData = (movieIndex, moviePrice) => {
   localStorage.setItem('selectedMovieIndex', movieIndex);
   localStorage.setItem('selectedMoviePrice', moviePrice);
 }
@@ -28,11 +28,10 @@ updateSelectedCount = () => {
   total.innerText = selectedSeatsCount * ticketPrice
 }
 
-//pull data from local localStorage
+// pull data from local localStorage
 populateUI = () => {
   const selectedSeats = JSON.parse(localStorage.getItem('selectedSeats'));
-  
-}
+};
 
 movieSelect.addEventListener('change', event => {
   ticketPrice = +event.target.value;
